@@ -1,0 +1,35 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "achhouy/multi-client",
+            "hostname": "client",
+            "essentials": false
+        },
+        {
+            "name": "server",
+            "image": "achhouy/multi-server",
+            "hostname": "api",
+            "essentials": false
+        },
+        {
+            "name": "worker",
+            "image": "achhouy/multi-worker",
+            "hostname": "worker",
+            "essentials": false
+        },
+        {
+            "name": "nginx",
+            "image": "achhouy/multi-nginx",
+            "essentials": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
