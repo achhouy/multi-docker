@@ -12,16 +12,16 @@ script:
     - docker run -e CI=true achhouy/react-test npm test
 
 after_success:
-    - docker build -t achhuoy/multi-client ./client
-    - docker build -t achhuoy/multi-nginx ./nginx
-    - docker build -t achhuoy/multi-server ./server
-    - docker build -t achhuoy/multi-worker ./worker
+    - docker build -t achhouy/multi-client ./client
+    - docker build -t achhouy/multi-nginx ./nginx
+    - docker build -t achhouy/multi-server ./server
+    - docker build -t achhouy/multi-worker ./worker
 
     # Login to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
     # Take those images and push them to docker hub
-    - docker push achhuoy/multi-client
-    - docker push achhuoy/multi-nginx
-    - docker push achhuoy/multi-server
-    - docker push achhuoy/multi-worker
+    - docker push achhouy/multi-client
+    - docker push achhouy/multi-nginx
+    - docker push achhouy/multi-server
+    - docker push achhouy/multi-worker
